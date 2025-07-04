@@ -1,0 +1,29 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - docs/*
+
+pool:
+  name: Mare Nectaris
+
+workspace:
+  clean: all
+
+resources:
+  repositories:
+    - repository: github-to-azdo-wiki-subtree
+      type: github
+      endpoint: UKHO
+      name: UKHO/devops-github-to-azdo-wiki-subtree
+      ref: refs/heads/main
+
+steps:
+  - template: template.yml@github-to-azdo-wiki-subtree
+    parameters:
+      HostRepoPrefix: "docs"
+      ExternalRepoAlias: "DevOpsChapter.wiki"
+      ExternalRepoUrl: "https://${env:SYSTEM_ACCESSTOKEN}@dev.azure.com/ukhydro/DevOps%20Chapter/_git/DevOpsChapter.wiki"
+      ExternalRepoBranch: "wikiMaster"
