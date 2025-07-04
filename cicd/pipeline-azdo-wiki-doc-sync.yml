@@ -16,7 +16,7 @@ resources:
   repositories:
     - repository: github-to-azdo-wiki-subtree
       type: github
-      endpoint: UKHO
+      endpoint: DevOps Chapter
       name: UKHO/devops-github-to-azdo-wiki-subtree
       ref: refs/heads/main
 
